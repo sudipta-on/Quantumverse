@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="type" content="website" />
+  <meta property="og:title" content="QuantumVerse | Interactive Quantum Computing Learning" />
+  <meta property="og:description"
+    content="Explore quantum algorithms, state vector simulations, and interactive notebooks right in your browser." />
+  <meta name="description"
+    content="QuantumVerse is a free, open-source platform for learning quantum computing with interactive visualizations, state-vector simulations, and Jupyter-style notebooks." />
+  <meta name="keywords"
+    content="quantum computing, quantum algorithms, Qiskit, Jupyter, quantum education, open source" />
+  <meta name="author" content="Sudipta Majumder" />
+  <title>QuantumVerse</title>
+
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages router recovery
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="./src/main.tsx"></script>
+</body>
+
+</html>

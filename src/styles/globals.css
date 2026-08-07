@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+  --radius: var(--radius);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #020617;
+
+    --primary: #9333ea;
+    /* Purple */
+    --primary-foreground: #ffffff;
+
+    --secondary: #06b6d4;
+    /* Cyan */
+    --secondary-foreground: #ffffff;
+
+    --accent: #3b82f6;
+    /* Blue */
+    --accent-foreground: #ffffff;
+
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+
+    --card: rgba(255, 255, 255, 0.7);
+    --card-foreground: #020617;
+
+    --border: #e2e8f0;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: #020617;
+    /* Dark */
+    --foreground: #f8fafc;
+
+    --primary: #a855f7;
+    --primary-foreground: #ffffff;
+
+    --secondary: #22d3ee;
+    --secondary-foreground: #020617;
+
+    --accent: #60a5fa;
+    --accent-foreground: #020617;
+
+    --muted: #0f172a;
+    --muted-foreground: #94a3b8;
+
+    --card: rgba(2, 6, 23, 0.7);
+    --card-foreground: #f8fafc;
+
+    --border: #1e293b;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-none;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 dark:bg-black/10 dark:border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-xl border border-white/30 dark:bg-black/40 dark:border-white/10;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+}
+
+
+
+/* Navbar */
+:root {
+
+  --background: #ffffff;
+
+  --foreground: #111827;
+
+  --card: #ffffff;
+
+  --border: #e5e7eb;
+
+  --primary: #22d3ee;
+
+  --secondary: #7c3aed;
+
+}
+
+.dark {
+
+  --background: #030712;
+
+  --foreground: #f8fafc;
+
+  --card: #0f172a;
+
+  --border: #1e293b;
+
+  --primary: #22d3ee;
+
+  --secondary: #8b5cf6;
+
+}
+
+body {
+
+  background: var(--background);
+
+  color: var(--foreground);
+
+  transition:
+    background .35s ease,
+    color .35s ease;
+
+}
+
+.notebook-content {
+  font-family: "Times New Roman", Times, serif;
+}

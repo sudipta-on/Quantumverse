@@ -1,0 +1,31 @@
+[
+    {
+        "id": "intro-to-quantum",
+        "title": "Introduction to Quantum Computing",
+        "category": "Beginner",
+        "duration": "4 hours",
+        "rating": 4.9,
+        "description": "Learn the fundamentals of Quantum Computing using Qiskit v2.x",
+        "tags": [
+            "Theory",
+            "Qiskit",
+            "Physics",
+            "IBM"
+        ],
+        "notebookFile": "notebooks/intro_to_quantum.ipynb"
+    },
+    {
+        "id": "vqe",
+        "title": "Variational Quantum Eigensolver (VQE)",
+        "category": "Intermediate",
+        "duration": "6 hours",
+        "rating": 4.8,
+        "description": "Deep dive into Variational Quantum Eigensolver (VQE).",
+        "tags": [
+            "Algorithms",
+            "Programming"
+        ],
+        "colabLink": "https://colab.research.google.com/github/sudipta-on/quantumverse/blob/main/notebooks/vqe.ipynb",
+        "notebookFile": "notebooks/VQE_Tut.ipynb"
+    }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "bloch-sphere",
+    "name": "Bloch Sphere",
+    "category": "Visualization",
+    "icon": "Circle",
+    "description": "Visualize single-qubit states and rotations on the Bloch sphere.",
+    "componentFile": "BlochSphereTool"
+  }
+]

@@ -1,0 +1,700 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Outfit", system-ui, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  /* We'll use CSS variables for theme colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  :root {
+    --background: #fafbff;
+    --foreground: #0f0d1a;
+    --card: rgba(255, 255, 255, 0.75);
+    --card-foreground: #0f0d1a;
+    --popover: rgba(255, 255, 255, 0.85);
+    --popover-foreground: #0f0d1a;
+    --primary: #8d55e6;
+    --primary-foreground: #fafafa;
+    --secondary: #f0e8ff;
+    --secondary-foreground: #4c1d95;
+    --muted: #f3f0ff;
+    --muted-foreground: #6b6481;
+    --accent: #7c3aed;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #fafafa;
+    --border: rgba(139, 92, 246, 0.15);
+    --input: rgba(139, 92, 246, 0.12);
+    --ring: #7c3aed;
+    --radius: 0.75rem;
+
+    /* Glassmorphism properties */
+    --glass-bg: rgba(255, 255, 255, 0.35);
+    --glass-border: rgba(139, 92, 246, 0.2);
+
+    /* Vibrant palette */
+    --glow-violet: #8b5cf6;
+    --glow-cyan: #06b6d4;
+    --glow-rose: #f43f5e;
+    --glow-amber: #f59e0b;
+    --glow-emerald: #10b981;
+  }
+
+  .dark {
+    --background: #050208;
+    --foreground: #f0eef5;
+    --card: rgba(20, 15, 35, 0.7);
+    --card-foreground: #f0eef5;
+    --popover: rgba(20, 15, 35, 0.85);
+    --popover-foreground: #f0eef5;
+    --primary: #a78bfa;
+    --primary-foreground: #0f0520;
+    --secondary: #1e1533;
+    --secondary-foreground: #c4b5fd;
+    --muted: #1a1230;
+    --muted-foreground: #9d8ec0;
+    --accent: #8b5cf6;
+    --accent-foreground: #ffffff;
+    --destructive: #dc2626;
+    --destructive-foreground: #fafafa;
+    --border: rgba(139, 92, 246, 0.2);
+    --input: rgba(139, 92, 246, 0.15);
+    --ring: #a78bfa;
+
+    /* Glassmorphism properties */
+    --glass-bg: rgba(15, 10, 30, 0.5);
+    --glass-border: rgba(139, 92, 246, 0.15);
+
+    /* Vibrant palette (brighter for dark bg) */
+    --glow-violet: #a78bfa;
+    --glow-cyan: #22d3ee;
+    --glow-rose: #fb7185;
+    --glow-amber: #fbbf24;
+    --glow-emerald: #34d399;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Glassmorphism utilities */
+@layer utilities {
+  .glass {
+    @apply bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] shadow-sm;
+  }
+
+  .glass-panel {
+    @apply bg-card/50 backdrop-blur-2xl border border-border/50 shadow-lg;
+  }
+
+  .text-gradient-vivid {
+    background: linear-gradient(135deg, var(--glow-violet), var(--glow-cyan), var(--glow-rose));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, var(--glow-amber), var(--glow-rose), var(--glow-violet));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 5s ease infinite;
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.3), 0 0 60px rgba(139, 92, 246, 0.1);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.3), 0 0 60px rgba(6, 182, 212, 0.1);
+  }
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* =============================================================================
+   NOTEBOOK CONTENT — THEME & DEVICE OVERRIDES
+   Admin: This section controls how notebook-exported HTML renders in the
+   course viewer. All rules target elements inside .notebook-content so
+   they don't bleed into other parts of the UI.
+
+   Light mode: the notebook HTML already looks correct (it was authored for
+   light backgrounds). No changes needed for light mode.
+
+   Dark mode: we override the most common hardcoded color patterns from
+   nbconvert/Jupyter exports using !important so CSS wins over inline styles.
+   ============================================================================= */
+
+/* ── Base notebook wrapper */
+.notebook-content {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ── Make all images responsive */
+.notebook-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Horizontal scroll for wide tables / pre blocks on mobile */
+.notebook-content table,
+.notebook-content pre {
+  overflow-x: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* ── <details> / <summary> expand/collapse — readable in both themes */
+.notebook-content details {
+  border: 1px solid;
+  border-color: rgb(226 232 240);
+  /* slate-200 */
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+}
+
+.dark .notebook-content details {
+  border-color: rgb(30 41 59) !important;
+  /* slate-800 */
+  background: rgb(15 23 42 / 0.4) !important;
+}
+
+.notebook-content summary {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  list-style: none;
+}
+
+.notebook-content summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ── <pre> blocks inside raw HTML (non-code outputs from notebooks) */
+.notebook-content pre {
+  background: rgb(30 41 59);
+  color: rgb(226 232 240);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =============================================================================
+   DARK MODE OVERRIDES — applied via .dark class on <html> (next-themes)
+
+   Strategy: We target the exact inline style strings written by nbconvert.
+   These cover ~95 % of the light-mode hard-coded colors in the notebooks.
+   If a new notebook uses different hex values, add overrides here.
+   ============================================================================= */
+
+/* ── White / near-white card backgrounds → slate-800/900 */
+.dark .notebook-content [style*="background:#ffffff"],
+.dark .notebook-content [style*="background: #ffffff"],
+.dark .notebook-content [style*="background-color:#ffffff"],
+.dark .notebook-content [style*="background-color: #ffffff"],
+.dark .notebook-content [style*="background:#fff"],
+.dark .notebook-content [style*="background: #fff"],
+.dark .notebook-content [style*="background-color:#fff"],
+.dark .notebook-content [style*="background-color: #fff"] {
+  background: rgb(30 41 59) !important;
+  /* slate-800 */
+  background-color: rgb(30 41 59) !important;
+}
+
+/* ── Very-light gradient banners (e.g. #f5f7ff, #e8f0ff) → dark card */
+.dark .notebook-content [style*="background: linear-gradient(135deg,#f5f7ff"],
+.dark .notebook-content [style*="background:linear-gradient(135deg,#f5f7ff"],
+.dark .notebook-content [style*="background: linear-gradient(135deg, #f5f7ff"],
+.dark .notebook-content [style*="background:linear-gradient(135deg, #f5f7ff"] {
+  background: linear-gradient(135deg, rgb(15 23 42), rgb(30 41 59)) !important;
+}
+
+/* ── Light-blue table row backgrounds */
+.dark .notebook-content [style*="background-color:#d1f2ff"],
+.dark .notebook-content [style*="background-color: #d1f2ff"] {
+  background-color: rgb(12 74 110 / 0.3) !important;
+  /* sky-900/30 */
+}
+
+/* ── Light-green table row backgrounds */
+.dark .notebook-content [style*="background-color:#c8f7c5"],
+.dark .notebook-content [style*="background-color: #c8f7c5"] {
+  background-color: rgb(6 78 59 / 0.3) !important;
+  /* emerald-900/30 */
+}
+
+/* ── Light-yellow table row backgrounds */
+.dark .notebook-content [style*="background-color:#fff0b3"],
+.dark .notebook-content [style*="background-color: #fff0b3"] {
+  background-color: rgb(120 53 15 / 0.3) !important;
+  /* amber-900/30 */
+}
+
+/* ── Light-purple table row backgrounds */
+.dark .notebook-content [style*="background-color:#f7c5ff"],
+.dark .notebook-content [style*="background-color: #f7c5ff"] {
+  background-color: rgb(88 28 135 / 0.3) !important;
+  /* purple-900/30 */
+}
+
+/* ── Green highlight box (#f0fdf4) */
+.dark .notebook-content [style*="background:#f0fdf4"],
+.dark .notebook-content [style*="background: #f0fdf4"],
+.dark .notebook-content [style*="background-color:#f0fdf4"] {
+  background: rgb(6 78 59 / 0.25) !important;
+}
+
+/* ── Blue highlight box (#f0f9ff, #e3f2fd) */
+.dark .notebook-content [style*="background:#f0f9ff"],
+.dark .notebook-content [style*="background: #f0f9ff"],
+.dark .notebook-content [style*="background-color:#f0f9ff"],
+.dark .notebook-content [style*="background-color:#E3F2FD"],
+.dark .notebook-content [style*="background-color: #E3F2FD"] {
+  background: rgb(12 74 110 / 0.25) !important;
+}
+
+/* ── Orange/red highlight boxes (#fef2f2, #fff7ed, #FEF5E7) */
+.dark .notebook-content [style*="background:#fef2f2"],
+.dark .notebook-content [style*="background: #fef2f2"],
+.dark .notebook-content [style*="background:#fff7ed"],
+.dark .notebook-content [style*="background: #fff7ed"],
+.dark .notebook-content [style*="background:#FEF5E7"],
+.dark .notebook-content [style*="background: #FEF5E7"],
+.dark .notebook-content [style*="background:#eef2ff"],
+.dark .notebook-content [style*="background: #eef2ff"] {
+  background: rgb(30 27 75 / 0.3) !important;
+}
+
+/* ── Dark text colors on light backgrounds → light for dark mode */
+.dark .notebook-content [style*="color:#334155"],
+.dark .notebook-content [style*="color: #334155"],
+.dark .notebook-content [style*="color:#1e293b"],
+.dark .notebook-content [style*="color: #1e293b"],
+.dark .notebook-content [style*="color:#333"],
+.dark .notebook-content [style*="color: #333"],
+.dark .notebook-content [style*="color:#444"],
+.dark .notebook-content [style*="color: #444"],
+.dark .notebook-content [style*="color:#2C3E50"],
+.dark .notebook-content [style*="color: #2C3E50"],
+.dark .notebook-content [style*="color:#566573"],
+.dark .notebook-content [style*="color: #566573"],
+.dark .notebook-content [style*="color:#7F8C8D"],
+.dark .notebook-content [style*="color: #7F8C8D"] {
+  color: rgb(203 213 225) !important;
+  /* slate-300 */
+}
+
+/* ── Very dark headings / accent colors → lighter in dark mode */
+.dark .notebook-content [style*="color:#0a3d91"],
+.dark .notebook-content [style*="color: #0a3d91"],
+.dark .notebook-content [style*="color:#1F618D"],
+.dark .notebook-content [style*="color: #1F618D"],
+.dark .notebook-content [style*="color:#196F3D"],
+.dark .notebook-content [style*="color: #196F3D"],
+.dark .notebook-content [style*="color:#117A65"],
+.dark .notebook-content [style*="color: #117A65"],
+.dark .notebook-content [style*="color:#196F3D"],
+.dark .notebook-content [style*="color:green"],
+.dark .notebook-content [style*="color: green"] {
+  color: rgb(103 232 249) !important;
+  /* cyan-300 */
+}
+
+.dark .notebook-content [style*="color:blue"],
+.dark .notebook-content [style*="color: blue"],
+.dark .notebook-content [style*="color:#2563eb"],
+.dark .notebook-content [style*="color: #2563eb"],
+.dark .notebook-content [style*="color:#0ea5e9"],
+.dark .notebook-content [style*="color: #0ea5e9"] {
+  color: rgb(147 197 253) !important;
+  /* blue-300 */
+}
+
+.dark .notebook-content [style*="color:#b30000"],
+.dark .notebook-content [style*="color: #b30000"],
+.dark .notebook-content [style*="color:#b91c1c"],
+.dark .notebook-content [style*="color: #b91c1c"],
+.dark .notebook-content [style*="color:red"],
+.dark .notebook-content [style*="color: red"] {
+  color: rgb(252 165 165) !important;
+  /* red-300 */
+}
+
+.dark .notebook-content [style*="color:#9333ea"],
+.dark .notebook-content [style*="color: #9333ea"],
+.dark .notebook-content [style*="color:#7e22ce"],
+.dark .notebook-content [style*="color: #7e22ce"],
+.dark .notebook-content [style*="color:#8E44AD"],
+.dark .notebook-content [style*="color: #8E44AD"] {
+  color: rgb(216 180 254) !important;
+  /* purple-300 */
+}
+
+/* ── Dark heading text inside colorful-background divs: keep white */
+.dark .notebook-content [style*="color:white"],
+.dark .notebook-content [style*="color: white"] {
+  color: #ffffff !important;
+}
+
+/* ── Borders: light gray → dark slate */
+.dark .notebook-content [style*="border:1px solid #ccc"],
+.dark .notebook-content [style*="border: 1px solid #ccc"],
+.dark .notebook-content [style*="border:1px solid #cbd5e1"],
+.dark .notebook-content [style*="border: 1px solid #cbd5e1"],
+.dark .notebook-content [style*="border:2px solid #d0dbff"] {
+  border-color: rgb(51 65 85) !important;
+  /* slate-700 */
+}
+
+/* ── TD/TH borders */
+.dark .notebook-content [style*="border:1px solid #ccc"] {
+  border-color: rgb(51 65 85) !important;
+}
+
+/* =============================================================================
+   MOBILE / SMALL SCREEN — ensure notebook HTML doesn't overflow
+   ============================================================================= */
+@media (max-width: 640px) {
+
+  /* Shrink notebook font sizes that use px values */
+  .notebook-content [style*="font-size:16px"],
+  .notebook-content [style*="font-size: 16px"],
+  .notebook-content [style*="font-size:17px"],
+  .notebook-content [style*="font-size: 17px"],
+  .notebook-content [style*="font-size:18px"],
+  .notebook-content [style*="font-size: 18px"] {
+    font-size: 14px !important;
+  }
+
+  .notebook-content [style*="font-size:19px"],
+  .notebook-content [style*="font-size: 19px"],
+  .notebook-content [style*="font-size:20px"],
+  .notebook-content [style*="font-size: 20px"] {
+    font-size: 15px !important;
+  }
+
+  .notebook-content [style*="font-size:24px"],
+  .notebook-content [style*="font-size: 24px"],
+  .notebook-content [style*="font-size:26px"],
+  .notebook-content [style*="font-size: 26px"],
+  .notebook-content [style*="font-size:22px"],
+  .notebook-content [style*="font-size: 22px"] {
+    font-size: 18px !important;
+  }
+
+  .notebook-content [style*="font-size:38px"],
+  .notebook-content [style*="font-size: 38px"] {
+    font-size: 22px !important;
+  }
+
+  /* Prevent fixed-width elements from breaking the layout */
+  .notebook-content [style*="width:80%"],
+  .notebook-content [style*="width: 80%"] {
+    width: 100% !important;
+  }
+
+  /* Remove large left margins on mobile */
+  .notebook-content [style*="margin-left:20px"],
+  .notebook-content [style*="margin-left: 20px"],
+  .notebook-content [style*="margin-left:18px"],
+  .notebook-content [style*="margin-left: 18px"] {
+    margin-left: 0.75rem !important;
+  }
+
+  /* Compact padding inside cards */
+  .notebook-content [style*="padding:18px"],
+  .notebook-content [style*="padding: 18px"] {
+    padding: 12px !important;
+  }
+}
+
+/* ============================================================================
+   NOTEBOOK CONTENT LIGHT/DARK MODE THEME OVERRIDES
+   ============================================================================ */
+
+/* Force all notebook elements to use your app's main font family */
+.notebook-content * {
+  font-family: inherit !important;
+}
+
+/* Light Mode Overrides for Embedded HTML Containers */
+.notebook-content div[style*="background"],
+.notebook-content div[style*="background-color"] {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Dark Mode Overrides for Embedded HTML Containers */
+.dark .notebook-content div[style*="background"],
+.dark .notebook-content div[style*="background-color"] {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: none !important;
+}
+
+/* Heading Color Overrides for Light Mode */
+.notebook-content h1[style],
+.notebook-content h2[style],
+.notebook-content h3[style],
+.notebook-content h4[style] {
+  color: #0f172a !important;
+}
+
+/* Heading Color Overrides for Dark Mode */
+.dark .notebook-content h1[style],
+.dark .notebook-content h2[style],
+.dark .notebook-content h3[style],
+.dark .notebook-content h4[style] {
+  color: #f8fafc !important;
+}
+
+/* Text and Paragraph Overrides */
+.notebook-content p[style],
+.notebook-content span[style],
+.notebook-content li[style] {
+  color: inherit !important;
+}
+
+/* Details and Summary Overrides */
+.notebook-content details {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dark .notebook-content details {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.notebook-content summary {
+  font-weight: 700;
+  cursor: pointer;
+  color: #0284c7;
+}
+
+.dark .notebook-content summary {
+  color: #38bdf8;
+}
+
+/* Table Light & Dark Mode Fixes */
+.notebook-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.notebook-content th {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.dark .notebook-content th {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+}
+
+.notebook-content td {
+  border: 1px solid #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+.dark .notebook-content td {
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+
+/* ============================================================================
+   NOTEBOOK CONTENT THEME & LAYOUT OVERRIDES
+   ============================================================================ */
+
+/* Prevent horizontal page breakage caused by wide tables or code cells */
+.notebook-content {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.notebook-content pre,
+.notebook-content table,
+.notebook-content iframe {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Force clean font inheritance */
+.notebook-content * {
+  font-family: inherit !important;
+}
+
+/* Neutralize inline-styled HTML card containers from Jupyter in Light Mode */
+.notebook-content div[style*="background"],
+.notebook-content div[style*="background-color"] {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Neutralize inline-styled HTML card containers from Jupyter in Dark Mode */
+.dark .notebook-content div[style*="background"],
+.dark .notebook-content div[style*="background-color"] {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Force heading visibility inside inline-styled container cards */
+.notebook-content h1[style],
+.notebook-content h2[style],
+.notebook-content h3[style],
+.notebook-content h4[style] {
+  color: inherit !important;
+}
+
+.dark .notebook-content h1,
+.dark .notebook-content h2,
+.dark .notebook-content h3,
+.dark .notebook-content h4 {
+  color: #f8fafc !important;
+}
+
+/* Force paragraph & list item text colors in Dark Mode */
+.dark .notebook-content p[style],
+.dark .notebook-content span[style],
+.dark .notebook-content li[style] {
+  color: #cbd5e1 !important;
+}
+
+/* Collapsible <details> & <summary> Styling */
+.notebook-content details {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1.25rem 0;
+  transition: all 0.2s ease;
+}
+
+.dark .notebook-content details {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.notebook-content summary {
+  font-weight: 700;
+  cursor: pointer;
+  color: #0284c7;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.dark .notebook-content summary {
+  color: #38bdf8;
+}
+
+/* Table Light & Dark Mode Fixes */
+.notebook-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 1.5rem 0 !important;
+}
+
+.notebook-content th {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.dark .notebook-content th {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+}
+
+.notebook-content td {
+  border: 1px solid #e2e8f0 !important;
+  color: #334155 !important;
+  padding: 0.625rem 1rem !important;
+}
+
+.dark .notebook-content td {
+  border: 1px solid #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+/* Right TOC Sidebar Scrollbar Styling */
+.toc-sidebar {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.toc-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+}
