@@ -9,7 +9,7 @@
 
 *An advanced, interactive educational resource designed to democratize quantum computing education through immersive visualization, seamless circuit simulation, and rigorous pedagogical design.*
 
-🌐 **Live Application URL:** [https://sudipta-on.github.io/QuantumVerse/](https://sudipta-on.github.io/QuantumVerse/)
+🌐 **Live Application URL:** [https://sudipta-on.github.io/Quantumverse/](https://sudipta-on.github.io/Quantumverse/)
 
 </div>
 
@@ -52,7 +52,7 @@ QuantumVerse adopts a **Scaffolded Cognitive Architecture**:
 ---
 
 ## 🎥 Demonstration Video
-> 🔗 **Watch the 5–10 minute walkthrough:** (Show Demostration Video)[https://youtu.be/20NgR9o8iWk]
+> 🔗 **Watch the 5–10 minute walkthrough:** [Show Demostration Video](https://youtu.be/20NgR9o8iWk)
 
 ---
 
