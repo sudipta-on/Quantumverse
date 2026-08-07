@@ -3,7 +3,7 @@ import { Atom, BookOpen, Cpu, Sparkles, GraduationCap, Award } from "lucide-reac
 
 export default function About() {
     return (
-        <div className="relative w-full min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 pt-24 sm:pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="relative w-full overflow-hidden min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 pt-24 sm:pt-32 pb-20 px-4 sm:px-6 lg:px-8">
 
             {/* Ambient Glow */}
             <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-cyan-500/15 via-purple-500/10 to-transparent blur-[120px] pointer-events-none rounded-full" />

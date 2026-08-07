@@ -12,6 +12,7 @@
             "Physics",
             "IBM"
         ],
+        "colabLink": "https://colab.research.google.com/drive/1kRcLq37CZVHVV4kwp-PynTNLKFs6oePt?usp=sharing",
         "notebookFile": "notebooks/intro_to_quantum.ipynb"
     },
     {
@@ -25,7 +26,7 @@
             "Algorithms",
             "Programming"
         ],
-        "colabLink": "https://colab.research.google.com/github/sudipta-on/quantumverse/blob/main/notebooks/vqe.ipynb",
+        "colabLink": "https://colab.research.google.com/drive/1OlUlXYaYVSxo4vuyFWHQuvJ-bGvLRV4A?usp=sharing",
         "notebookFile": "notebooks/VQE_Tut.ipynb"
     }
 ]
